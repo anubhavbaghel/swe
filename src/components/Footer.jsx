@@ -1,39 +1,73 @@
 import React from "react";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import MailIcon from '@mui/icons-material/Mail'; 
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Bot, ArrowUp } from "lucide-react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 mt-20 z-10 relative">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        {/* Brand / Tagline */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="text-2xl font-bold tracking-wider text-white mb-2 cursor-pointer hover:text-teal-400 transition-colors">
-            Anubhav<span className="text-teal-500">.</span>
-          </h2>
-          <p className="text-gray-400 text-sm max-w-sm">
-            Turning ideas into modern, responsive, and user-friendly web experiences.
-          </p>
-        </div>
+    <footer className="border-t border-white/10 bg-[#020617] py-12 px-4 sm:px-6 lg:px-8 text-xs text-gray-400 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         
-        {/* Social Links */}
-        <div className="flex gap-6 text-gray-400">
-          <a href="mailto:code.anubhavbaghel@gmail.com" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="Email">
-            <MailIcon fontSize="medium" />
+        {/* Brand & Tagline */}
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <Bot className="w-4 h-4" />
+          </div>
+          <div className="text-left">
+            <span className="font-bold text-white text-sm block">
+              Anubhav Baghel
+            </span>
+            <span className="text-gray-500 font-mono text-[11px]">
+              Autonomous Software & Systems Architect
+            </span>
+          </div>
+        </div>
+
+        {/* Social / Direct Links */}
+        <div className="flex items-center gap-6">
+          <a
+            href="mailto:code.anubhavbaghel@gmail.com"
+            className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
+          >
+            <FaEnvelope className="w-3.5 h-3.5" />
+            <span>Email</span>
           </a>
-          <a href="https://www.linkedin.com/in/anubhav-baghel/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="LinkedIn">
-            <LinkedInIcon fontSize="medium" />
+          <a
+            href="https://github.com/anubhavbaghel"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
+          >
+            <FaGithub className="w-3.5 h-3.5" />
+            <span>GitHub</span>
           </a>
-          <a href="https://github.com/anubhavbaghel" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 hover:-translate-y-1 transition-all duration-300" aria-label="GitHub">
-            <GitHubIcon fontSize="medium" />
+          <a
+            href="https://www.linkedin.com/in/anubhav-baghel/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
+          >
+            <FaLinkedin className="w-3.5 h-3.5" />
+            <span>LinkedIn</span>
           </a>
         </div>
+
+        {/* Scroll Back to Top Button */}
+        <button
+          onClick={scrollToTop}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-emerald-500/30 transition-all cursor-pointer font-mono text-[11px]"
+        >
+          <span>Back to Top</span>
+          <ArrowUp className="w-3.5 h-3.5" />
+        </button>
       </div>
-      
-      {/* Copyright */}
-      <div className="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-white/5 flex flex-col items-center text-sm text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Anubhav. All rights reserved.</p>
+
+      <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-gray-500 text-[11px]">
+        <span>&copy; {new Date().getFullYear()} Anubhav Baghel. All rights reserved.</span>
+        <span className="font-mono">Engineered for deterministic performance and business ROI.</span>
       </div>
     </footer>
   );
