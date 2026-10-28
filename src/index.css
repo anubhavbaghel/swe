@@ -3,22 +3,127 @@
 @tailwind utilities;
 
 :root {
-  background-color: black;
-  color: white;
+  --color-canvas: 255 255 255;
+  --color-paper-50: 255 255 255;
+  --color-paper-100: 255 255 255;
+  --color-paper-200: 244 244 245;
+  --color-paper-300: 228 228 231;
+  --color-paper-400: 212 212 216;
+
+  --color-ink-900: 9 9 11;
+  --color-ink-800: 24 24 27;
+  --color-ink-700: 39 39 42;
+  --color-ink-600: 82 82 91;
+  --color-ink-500: 113 113 122;
+  --color-ink-400: 161 161 170;
+  --color-ink-300: 212 212 216;
+  --color-ink-200: 228 228 231;
+  --color-ink-100: 244 244 245;
+
+  --color-terracotta: 234 88 12;
+  --color-terracotta-dark: 194 65 12;
+  --color-terracotta-light: 249 115 22;
+  --color-terracotta-subtle: 255 247 237;
+  --color-terracotta-border: 254 215 170;
+
+  --color-cobalt: 37 99 235;
+  --color-cobalt-dark: 29 78 216;
+  --color-cobalt-light: 59 130 246;
+  --color-cobalt-subtle: 239 246 255;
+  --color-cobalt-border: 191 219 254;
+
+  --grid-line-color: rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --color-canvas: 0 0 0;
+  --color-paper-50: 10 10 10;
+  --color-paper-100: 0 0 0;
+  --color-paper-200: 22 22 24;
+  --color-paper-300: 39 39 42;
+  --color-paper-400: 63 63 70;
+
+  --color-ink-900: 255 255 255;
+  --color-ink-800: 244 244 245;
+  --color-ink-700: 228 228 231;
+  --color-ink-600: 161 161 170;
+  --color-ink-500: 113 113 122;
+  --color-ink-400: 82 82 91;
+  --color-ink-300: 63 63 70;
+  --color-ink-200: 39 39 42;
+  --color-ink-100: 24 24 27;
+
+  --color-terracotta: 249 115 22;
+  --color-terracotta-dark: 234 88 12;
+  --color-terracotta-light: 251 146 60;
+  --color-terracotta-subtle: 41 18 10;
+  --color-terracotta-border: 124 45 18;
+
+  --color-cobalt: 96 165 250;
+  --color-cobalt-dark: 59 130 246;
+  --color-cobalt-light: 147 197 253;
+  --color-cobalt-subtle: 15 23 42;
+  --color-cobalt-border: 30 58 138;
+
+  --grid-line-color: rgba(255, 255, 255, 0.05);
+}
+
+html {
+  background-color: #ffffff;
+}
+
+html.dark {
+  background-color: #000000;
 }
 
 body {
-  font-family: "Geist", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: rgb(var(--color-ink-900));
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.dark body {
+  background-color: #000000;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: "Stack Sans Notch", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+code, pre, kbd, .font-mono {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Subtle architectural drafting background grid */
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Custom focus ring for accessible keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

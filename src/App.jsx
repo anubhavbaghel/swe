@@ -1,28 +1,52 @@
-import { useState } from "react";
-import "./App.css";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Projects from "./components/Projects";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import TechStackSection from "./components/TechStackSection";
-import Certifications from "./components/Certifications";
-import Contact from "./components/Contact";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
+import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import SpaceBackground from "./components/SpaceBackground";
+
+import HomePage from "./pages/HomePage";
+import WorkPage from "./pages/WorkPage";
+import CaseStudyPage from "./pages/CaseStudyPage";
+import AboutPage from "./pages/AboutPage";
+import NotesPage from "./pages/NotesPage";
+import NoteArticlePage from "./pages/NoteArticlePage";
+import ResumePage from "./pages/ResumePage";
+import ContactPage from "./pages/ContactPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Hero />
-      <Projects />
-      <About />
-      <Experience />
-      <TechStackSection />
-      <Certifications />
-      <Contact />
-      <Footer />
-    </>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <div className="relative min-h-screen flex flex-col bg-white dark:bg-black text-ink-900 selection:bg-zinc-200 dark:selection:bg-zinc-800 selection:text-ink-900 dark:selection:text-white antialiased transition-colors duration-200">
+          {/* Subtle Space Galaxy & Twinkling Stars Background */}
+          <SpaceBackground />
+
+          {/* Persistent Editorial Header */}
+          <Navigation />
+
+          {/* Dedicated Route Views */}
+          <main className="flex-1 relative z-10">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/work" element={<WorkPage />} />
+              <Route path="/work/:projectId" element={<CaseStudyPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/notes" element={<NotesPage />} />
+              <Route path="/notes/:noteId" element={<NoteArticlePage />} />
+              <Route path="/resume" element={<ResumePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+
+          {/* Persistent Editorial Colophon & Footer */}
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
