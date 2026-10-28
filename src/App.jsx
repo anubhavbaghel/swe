@@ -1,31 +1,28 @@
-import React from "react";
-import Navbar from "./components/Navbar";
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
 import Hero from "./components/Hero";
-import CorePillars from "./components/CorePillars";
-import AgentSimulator from "./components/AgentSimulator";
-import SolutionsShowcase from "./components/SolutionsShowcase";
-import RoiCalculator from "./components/RoiCalculator";
-import TechArsenal from "./components/TechArsenal";
-import AboutApproach from "./components/AboutApproach";
-import ContactSection from "./components/ContactSection";
+import Projects from "./components/Projects";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import TechStackSection from "./components/TechStackSection";
+import Certifications from "./components/Certifications";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 flex flex-col font-sans selection:bg-emerald-500/20 selection:text-emerald-300">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <CorePillars />
-        <AgentSimulator />
-        <SolutionsShowcase />
-        <RoiCalculator />
-        <TechArsenal />
-        <AboutApproach />
-        <ContactSection />
-      </main>
+    <>
+      <Header />
+      <Hero />
+      <Projects />
+      <About />
+      <Experience />
+      <TechStackSection />
+      <Certifications />
+      <Contact />
       <Footer />
-    </div>
+    </>
   );
 }
 
